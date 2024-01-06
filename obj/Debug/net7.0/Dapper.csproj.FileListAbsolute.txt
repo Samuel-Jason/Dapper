@@ -1,0 +1,5 @@
+C:\Users\Jason\Desktop\PROJETOS PARA GITHUB\Dapper\obj\Debug\net7.0\Dapper.csproj.AssemblyReference.cache
+C:\Users\Jason\Desktop\PROJETOS PARA GITHUB\Dapper\obj\Debug\net7.0\Dapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jason\Desktop\PROJETOS PARA GITHUB\Dapper\obj\Debug\net7.0\Dapper.AssemblyInfoInputs.cache
+C:\Users\Jason\Desktop\PROJETOS PARA GITHUB\Dapper\obj\Debug\net7.0\Dapper.AssemblyInfo.cs
+C:\Users\Jason\Desktop\PROJETOS PARA GITHUB\Dapper\obj\Debug\net7.0\Dapper.csproj.CoreCompileInputs.cache
