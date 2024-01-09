@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dapper.Model;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Dapper
@@ -10,9 +11,12 @@ namespace Dapper
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                UpdateCategories(connection);
-                ListCategories(connection);
-                CreateCategories(connection);
+                //UpdateCategories(connection);
+                //ListCategories(connection);
+                //CreateCategories(connection);
+                //ExecuteProcedure(connection);
+                // ExecuteReadProcedure(connection);
+
             }
         }
 
@@ -70,5 +74,32 @@ namespace Dapper
 
             Console.WriteLine($"{rows} Registros atualizados");
         }
+        static void ExecuteProcedure(SqlConnection connection)
+        {
+            var procedure = "[spDeleteStudent] @StudentId";
+            var pars = new { StudentUd = "..." };
+            var affectedRows = connection.Execute(
+                procedure,
+                pars,
+                CommandType: CommandType.StoredProcedure);
+
+            Console.WriteLine(affectedRows);
+        }
+        static void ExecuteReadProcedure(SqlConnection connection)
+        {
+            var procedure = "[spDeleteStudent] @StudentId";
+            var pars = new { CategotyId = "..." };
+            var courses = connection.Query(
+                procedure,
+                pars,
+                CommandType: CommandType.StoredProcedure);
+
+            foreach ( var item in courses )
+            {
+                Console.WriteLine(item.Id);
+            }
+        }
+
+
     }
 }
