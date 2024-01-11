@@ -94,12 +94,46 @@ namespace Dapper
                 pars,
                 CommandType: CommandType.StoredProcedure);
 
-            foreach ( var item in courses )
+            foreach (var item in courses)
             {
                 Console.WriteLine(item.Id);
             }
         }
+        //ExecuteScalar apos alteracoes ele retorna o id = um insert e depois um select
+        static void ExecuteScalar(SqlConnection connection)
+        {
+            var category = new Category();
+            category.Id = Guid.NewGuid();
+            category.Title = "Amazon AWS";
+            category.Url = "Amazon";
+            category.Description = "Categoria destinada a servicos aws";
+            category.Order = 8;
+            category.Summary = "AWS Cloud";
+            category.Featured = false;
 
+            //SQL SERVER IRA GERAR O ID
+            var insertSql = $@"INSERT INTO 
+                [Category] 
+            VALUES(
+                NEWID(), 
+                @Title,
+                @Url,
+                @Summary,
+                @Order,
+                @Description,
+                @Featured)";
+
+            var id = connection.ExecuteScalar<Guid>(insertSql, new
+            {
+                category.Title,
+                category.Url,
+                category.Summary,
+                category.Order,
+                category.Description,
+                category.Featured
+            });
+            Console.WriteLine($"A categoria Inserida foi : {id}");
+        }
 
     }
 }
