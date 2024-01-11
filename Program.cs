@@ -121,7 +121,8 @@ namespace Dapper
                 @Summary,
                 @Order,
                 @Description,
-                @Featured)";
+                @Featured) 
+                SELECT SOPE_IDENTITY()";
 
             var id = connection.ExecuteScalar<Guid>(insertSql, new
             {
@@ -134,6 +135,14 @@ namespace Dapper
             });
             Console.WriteLine($"A categoria Inserida foi : {id}");
         }
-
+        static void ReadView(SqlConnection connection)
+        {
+            var sql = "SELECET * FROM [vwCourses]";
+            var course = connection.Query(sql);
+            foreach (var item in course)
+            {
+                Console.WriteLine(item.Id);
+            }
+        }
     }
 }
